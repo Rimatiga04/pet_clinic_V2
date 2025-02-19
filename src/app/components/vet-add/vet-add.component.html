@@ -1,0 +1,84 @@
+<div class="container">
+
+    <h1>Add pet</h1>
+    <br>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()"><!--Muy atento a esto-->
+
+        <div class="input-group mb-3">
+            <span class="input-group-text">Nombre</span>
+
+            <input type="text" class="form-control" required formControlName = "firstName">
+        </div>
+            @if(form.controls["firstName"].invalid && (form.controls["firstName"].dirty || form.controls["firstName"].touched)){
+                @if(form.controls["firstName"].errors?.["firstName"]){<!--El error puede estar vacío-->
+
+                    <div class = "alert alert-danger">
+                        El nombre es obligatorio
+                    </div>
+                }
+                @if(form.controls["firstName"].errors?.["minlength"]){
+
+                    <div class = "alert alert-danger">
+                        El nombre debe tener al menos 2 caracteres
+                    </div>
+                }
+
+            }
+        <!--Fin del acmpo NOMBRE-->
+        <div class="input-group mb-3">
+            <span class="input-group-text">Apellidos</span>
+            <input type="text" class="form-control" required formControlName = "lastName">
+        </div>
+
+            @if(form.controls["lastName"].invalid && (form.controls["lastName"].dirty || form.controls["lastName"].touched)){
+                @if(form.controls["lastName"].errors?.["lastName"]){<!--El error puede estar vacío-->
+
+                    <div class = "alert alert-danger">
+                        El apellido es obligatorio
+                    </div>
+                }
+                @if(form.controls["lastName"].errors?.["minlength"]){
+
+                    <div class = "alert alert-danger">
+                        El apellidos debe tener al menos 2 caracteres
+                    </div>
+                }
+
+            }
+
+        <select id="facturaSelect" class="form-control"  multiple 
+        formControlName = "specialties"><!--Muy atento a como vinculo la factura seleccionada con [(ngModel)]="idFacturaSeleccionada" -->
+          <option disabled selected [value]="-1">
+            {{tipoSpe}}
+          </option>
+          @for (spe of spes; track $index) {
+          <option  [value]="spe.id">
+            {{ spe.name }} 
+          </option>
+        }
+        </select>
+       <!-- <p-select [options]="tipoPet" [(ngModel)]="valorForm" optionLabel="name"
+            placeholder="Selecciona tipo de mascota" (onChange)="listarTiposPet($event)" class="w-full md:w-56">
+        </p-select>-->
+
+
+
+
+
+        <div class="d-flex justify-content-center mt-3">
+            <button type="submit" class="btn btn-primary"
+                [disabled]="!form.valid">{{textBottom}}</button><!--Atento para lo que sirve el [disabled]. Sehabilita el botón si no están los datos correctos del formulario-->
+            <button type="submit" class="btn btn-danger mx-1" routerLink="/">Cancelar</button>
+        </div>
+    </form>
+
+    <!-- Enlace Volver -->
+    <a class="btn btn-warning d-flex justify-content-center mt-3" routerLink="/" role="button">Volver
+        atrás</a><!--Atento a el routerLink y la barra-->
+
+
+    <br>
+
+
+
+</div>

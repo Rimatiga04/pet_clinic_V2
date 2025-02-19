@@ -1,0 +1,13 @@
+
+<div class="container menu">
+<p-menubar  [model]="items" class="ml-auto">
+   
+    <ng-template #end>
+        <div class="flex items-center gap-2">
+            <input type="text" pInputText placeholder="Search" class="w-36" />
+            <p-avatar image="https://www.gravatar.com/avatar/05dfd4b41340d09cae045235eb0893c3?d=mp" class="flex items-center justify-center mr-2"  />
+        </div>
+    </ng-template>
+</p-menubar>
+</div>
+<router-outlet />

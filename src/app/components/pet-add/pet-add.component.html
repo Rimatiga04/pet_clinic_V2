@@ -1,0 +1,76 @@
+<div class="container">
+
+    <h1>Add pet</h1>
+    <br>
+    <form #petForm="ngForm" (ngSubmit)="onSubmit(petForm.value)"><!--Muy atento a esto-->
+
+        <!--FIN de campo DNI-->
+        <div class="input-group mb-3">
+            <span class="input-group-text">Owner</span>
+
+            <input type="text" class="form-control" required [(ngModel)]="owner" name="owner" #nombre="ngModel"
+                id="floatingInputGroup1" placeholder="Nombre">
+
+        </div>
+        <div [hidden]="nombre.valid || nombre.pristine" class="alert alert-danger">
+            <!--Aqui es donde utilizamos #dni="ngModel" -->
+            El owner es obligatorio
+        </div>
+        <!--Fin del acmpo NOMBRE-->
+        <div class="input-group mb-3">
+            <span class="input-group-text">Name</span>
+            <input type="text" class="form-control" required [(ngModel)]="pet.name" name="name" #apellidos="ngModel"
+                id="floatingInputGroup1" placeholder="Name">
+
+        </div>
+        <div [hidden]="apellidos.valid || apellidos.pristine" class="alert alert-danger">
+            <!--Aqui es donde utilizamos #dni="ngModel" -->
+            El name es obligatorio
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text">Birth Date</span>
+            <input type="date" class="form-control" required [(ngModel)]="pet.birthDate" name="birthDate"
+                #apellidos="ngModel" id="floatingInputGroup1" placeholder="Birth Date">
+
+        </div>
+        <div [hidden]="apellidos.valid || apellidos.pristine" class="alert alert-danger">
+            <!--Aqui es donde utilizamos #dni="ngModel" -->
+            El name es obligatorio
+        </div>
+
+        <select id="facturaSelect" class="form-control" name="id" (change)="listarTiposPet($event)" 
+        [(ngModel)]="valorForm"><!--Muy atento a como vinculo la factura seleccionada con [(ngModel)]="idFacturaSeleccionada" -->
+          <option [value]="-1">
+            {{typePet}}
+          </option>
+          @for (pet of tipoPet; track $index) {
+          <option  [value]="pet.id">
+            {{ pet.name }} 
+          </option>
+        }
+        </select>
+       <!-- <p-select [options]="tipoPet" [(ngModel)]="valorForm" optionLabel="name"
+            placeholder="Selecciona tipo de mascota" (onChange)="listarTiposPet($event)" class="w-full md:w-56">
+        </p-select>-->
+
+
+
+
+
+        <div class="d-flex justify-content-center mt-3">
+            <button type="submit" class="btn btn-primary"
+                [disabled]="!petForm.valid">{{textBottom}}</button><!--Atento para lo que sirve el [disabled]. Sehabilita el botón si no están los datos correctos del formulario-->
+            <button type="submit" class="btn btn-danger mx-1" routerLink="/">Cancelar</button>
+        </div>
+    </form>
+
+    <!-- Enlace Volver -->
+    <a class="btn btn-warning d-flex justify-content-center mt-3" routerLink="/" role="button">Volver
+        atrás</a><!--Atento a el routerLink y la barra-->
+
+
+    <br>
+
+
+
+</div>

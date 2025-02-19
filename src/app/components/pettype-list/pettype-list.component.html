@@ -1,0 +1,32 @@
+<div class="container">
+    <h2>Pets type</h2>
+    @for (type of petTypes; track $index) {
+    <table class="table table-striped table-hover">
+        <tr>
+            <td colspan="2">
+            <div class="d-flex align-items-center">
+            <th colspan="2">Name</th>
+
+            <input type="text" [value]="type.name" readonly class="form-control me-2" style="width: auto;" />
+
+
+            <button class="btn btn-default me-2" (click)="visualizar(type.name, type.id)">Edit type</button>
+
+
+            <button class="btn btn-default" (click)="borrarPetType(type.id)">Delete type</button>
+            </div>
+            </td>
+        </tr>
+
+    </table>
+
+
+    }
+<a class="me-3">
+    <button class="btn btn-default" (click)="visualizar()">Add</button></a>
+<!--Muy atebto a esto-->
+@if (is_editando !== -1 || det) {
+    <app-pettype-add [petTypeId]="is_editando" [petTypeName]="petTypeName" (anadeModPetType)="anadeModPetType($event)">
+    </app-pettype-add>
+}
+</div>

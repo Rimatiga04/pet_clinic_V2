@@ -1,0 +1,81 @@
+<div class="container">
+    @if(propietario.id==-1){
+        <h2>Estamos en el formulario</h2>
+        <h3>Nuevo propietario</h3>
+    }@else{
+        <h2>Estamos en el formulario</h2>
+        <h3>Modifica propietario</h3>
+    }
+    
+    <br>
+    <form #personaForm="ngForm" (ngSubmit)="onSubmit(personaForm.value)"><!--Muy atento a esto-->
+        
+        <!--FIN de campo DNI-->
+        <div class="input-group mb-3">
+            <span class="input-group-text">Nombre</span>
+
+            <input type="text" class="form-control" required [(ngModel)]="propietario.firstName" name="firstName"
+                #nombre="ngModel" id="floatingInputGroup1" placeholder="Nombre">
+
+        </div>
+        <div [hidden]="nombre.valid || nombre.pristine" class="alert alert-danger"> <!--Aqui es donde utilizamos #dni="ngModel" -->
+            El nombre es obligatorio
+        </div>
+        <!--Fin del acmpo NOMBRE-->
+        <div class="input-group mb-3">
+            <span class="input-group-text">Apellidos</span>
+            <input type="text" class="form-control" required [(ngModel)]="propietario.lastName" name="lastName"
+                #apellidos="ngModel" id="floatingInputGroup1" placeholder="Apellidos">
+
+        </div>
+        <div [hidden]="apellidos.valid || apellidos.pristine" class="alert alert-danger"> <!--Aqui es donde utilizamos #dni="ngModel" -->
+            El apellido es obligatorio
+        </div>
+
+        <div class="input-group mb-3">
+            <span class="input-group-text">Direccion</span>
+            
+            <input type="text" class="form-control" required [(ngModel)]="propietario.address" name="address" #direccion="ngModel"
+                id="floatingInputGroup1" placeholder="Dirección"><!--Atentísimo a esto-->
+        </div>
+        <div [hidden]="direccion.valid || direccion.pristine" class="alert alert-danger"><!--Aqui es donde utilizamos #dni="ngModel" -->
+            La dirección es obligatoria
+        </div>
+
+        <div class="input-group mb-3">
+            <span class="input-group-text">Ciudad</span>
+            
+            <input type="text" class="form-control" required [(ngModel)]="propietario.city" name="city" #ciudad="ngModel"
+                id="floatingInputGroup1" placeholder="Ciudad"><!--Atentísimo a esto-->
+        </div>
+        <div [hidden]="ciudad.valid || ciudad.pristine" class="alert alert-danger"><!--Aqui es donde utilizamos #dni="ngModel" -->
+            La ciudad es obligatoria
+        </div>
+
+        <div class="input-group mb-3">
+            <span class="input-group-text">Teléfono</span>
+            
+            <input type="text" class="form-control" required [(ngModel)]="propietario.telephone" name="telephone" #tlf="ngModel"
+                id="floatingInputGroup1" placeholder="Teléfono"><!--Atentísimo a esto-->
+        </div>
+        <div [hidden]="tlf.valid || tlf.pristine" class="alert alert-danger"><!--Aqui es donde utilizamos #dni="ngModel" -->
+            El dni es obligatorio
+        </div>
+
+
+        <div class="d-flex justify-content-center mt-3">
+            <button type="submit" class="btn btn-primary" [disabled]="!personaForm.valid" >{{textBottom}}</button><!--Atento para lo que sirve el [disabled]. Sehabilita el botón si no están los datos correctos del formulario-->
+            <button type="submit" class="btn btn-danger mx-1" routerLink="/">Cancelar</button>
+        </div>
+    </form>
+
+    <!-- Enlace Volver -->
+    <a class="btn btn-warning d-flex justify-content-center mt-3" routerLink="/" role="button">Volver atrás</a><!--Atento a el routerLink y la barra-->
+
+    
+    <br>
+
+
+
+</div>
+    

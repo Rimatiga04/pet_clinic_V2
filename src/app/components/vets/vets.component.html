@@ -1,0 +1,40 @@
+<div class="container lista">
+    <h2>Lista veterinarios</h2>
+    <a class="btn btn-primary mb-3 mx-3" routerLink="/vet-add/-1">Añadir veterinario</a>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+
+                <th>Name</th>
+                <th>Specialties</th>
+                <!--<th>Acción</th>-->
+            </tr>
+        </thead>
+        <tbody>
+            @for (vet of vets; track $index ){
+            <tr>
+                <td>{{vet.firstName+" "+vet.lastName}}</td>
+                
+                @if(vet.specialties.length > 0){
+                @for (s of vet.specialties; track $index) {
+                <div>{{ s.name }}</div>
+                }
+                }@else {
+                <td>
+                    <p style="color: red">no specialty</p>
+                </td>
+                }
+                <td><a ><button class="btn btn-default" routerLink="/vet-add/{{vet.id}}">Edit vet</button></a>
+                <a ><button class="btn btn-default">Delete vet</button></a></td>
+                <!-- <td>
+                <div class="d-flex">
+                    <button class="btn btn-primary mx-2" routerLink="/formulario/{{propietario.id}}">Modificar</button>
+                    <button class="btn btn-danger" (click)="deleteOwner(propietario.id,propietario.firstName+' '+propietario.lastName)">Borrar</button>
+                </div>
+            </td>-->
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

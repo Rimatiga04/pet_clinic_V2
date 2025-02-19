@@ -1,0 +1,33 @@
+@if(visits.length!=0){
+<div class="container">
+    
+    <table class="table table-striped table-hover table-bordered">
+        <thead>
+            <th>Visit Date</th>
+            <th>Description</th>
+            <th>Action</th>
+
+        </thead>
+        <tbody>
+            @for (visit of visits; track $index) {
+            <tr>
+                <td>{{visit.visitDate}}</td>
+                <td>{{visit.description}}</td>
+                <td>
+                    <a class="me-3">
+                        <button class="btn btn-default" routerLink="/visit-add/{{visit.id}}/{{visit.pet}}/{{visit.visitDate}}/{{visit.description}}/{{owner.nameOwner}}">Edit visit</button></a>
+                    <a class="me-3" (click)="BorraVisit(visit.id, visit.visitDate)"><button class="btn btn-default">Delete visit</button></a>
+                </td>
+            </tr>
+        }
+        </tbody>
+
+
+    </table>
+    
+
+
+</div>
+}@else{
+    <h2>No ha venido a la consulta mala perosna</h2>
+}

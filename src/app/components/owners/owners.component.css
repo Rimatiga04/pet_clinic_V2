@@ -1,0 +1,26 @@
+.table{
+    
+    border-collapse: collapse;
+}
+.table th, td {
+
+    border: solid black 1px;
+    text-align: center;
+}
+h2{
+    text-align: center;
+    
+}
+
+.p-menubar{
+    background-color: aliceblue !important;
+    margin-top: 50px;
+    color:red
+}
+
+.p-menubar .p-menuitem-link {
+    color: red;  /* Color del texto en los items del menú */
+  }
+
+
+

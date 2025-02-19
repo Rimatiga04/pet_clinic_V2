@@ -1,0 +1,34 @@
+<div class="container">
+    <h2>Pets</h2>
+    @for (pet of pets; track $index) {
+    <table class="table table-striped table-hover">
+        <tr>
+            <th colspan="2">Name</th>
+        </tr>
+        <tr>
+            <td colspan="2">{{ pet.name }}</td>
+        </tr>
+        <tr>
+            <th colspan="2">Birth Date</th>
+        </tr>
+        <tr>
+            <td colspan="2">{{ pet.birthDate}}</td>
+        </tr>
+        <tr>
+            <th colspan="2">Type</th>
+        </tr>
+        <tr>
+            <td colspan="2">{{ pet.typeName }}</td>
+        </tr>
+    </table>
+    <a class="me-3" routerLink="/">
+        <button class="btn btn-default">&#60; Volver</button></a>
+    <a class="me-3">
+        <button class="btn btn-default"  routerLink="/pet-add/{{owner}}/{{pet.id}}/{{pet.ownerId}}">Edit pet</button></a>
+    <a class="me-3">
+        <button class="btn btn-default" (click)="BorraPet(pet.id, pet.name)">Delete pet</button></a>
+    <a><button class="btn btn-default" routerLink="/visit-add/{{pet.id}}/{{owner}}/{{pet.typeName}}/{{pet.birthDate}}/{{pet.name}}/{{pet.ownerId}}">Add visit &#62;</button></a>
+        <!--Aquí pongo el componente hijo-->
+    <app-visit-list [visits]="pet.visits" [owner]="{nameOwner:owner , id:pet.ownerId}"></app-visit-list>
+    }
+</div>
