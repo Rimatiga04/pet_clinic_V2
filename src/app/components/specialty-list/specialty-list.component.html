@@ -26,6 +26,6 @@
     <button class="btn btn-default" (click)="visualizar()">Add</button></a>
 <!--Muy atebto a esto-->
 @if (visualiza) {
-    <app-specialty-add [speId]="is_editando" [speName]="nameSpe"  (anadeModSpe)="anadeModSpe($event)"></app-specialty-add>
+    <app-specialty-add [speId]="is_editando" [speName]="nameSpe"  (anadeModSpe)="anadeModSpe($event)" (cancelEdit)="cancelarEdicion()"></app-specialty-add>
 }
 </div>

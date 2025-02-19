@@ -1,36 +1,17 @@
 <div class="container">
-   
     <h1>{{textBottom}}</h1>
     <br>
-    <form #petTypeForm="ngForm" (ngSubmit)="onSubmit(petTypeForm.value)"><!--Muy atento a esto-->
-        
-        <!--FIN de campo DNI-->
+    <form #petTypeForm="ngForm" (ngSubmit)="onSubmit(petTypeForm.value)">
         <div class="input-group mb-3">
             <span class="input-group-text">type</span>
-
-            <input type="text" class="form-control" required [(ngModel)]="petType.name" name="name"
-                #nombre="ngModel" id="floatingInputGroup1" placeholder="Nombre">
-
+            <input type="text" class="form-control" required [(ngModel)]="petType.name" name="name" #nombre="ngModel"
+                id="floatingInputGroup1" placeholder="Nombre">
         </div>
-       
-
-       
-
-
         <div class="d-flex justify-content-center mt-3">
-            <button type="submit" class="btn btn-primary" [disabled]="!petTypeForm.valid" >{{textBottom}}</button><!--Atento para lo que sirve el [disabled]. Sehabilita el botón si no están los datos correctos del formulario-->
-            <button type="submit" class="btn btn-danger mx-1" routerLink="/">Cancelar</button>
+            <button type="submit" class="btn btn-primary" [disabled]="!petTypeForm.valid">{{textBottom}}</button>
+            <button type="button" class="btn btn-danger mx-1" (click)="cancel()">Cancelar</button>
         </div>
     </form>
-
-    <!-- Enlace Volver -->
-    <a class="btn btn-warning d-flex justify-content-center mt-3" routerLink="/" role="button">Volver atrás</a><!--Atento a el routerLink y la barra-->
-
-    
+    <a class="btn btn-warning d-flex justify-content-center mt-3" routerLink="/" role="button">Volver atrás</a>
     <br>
-
-
-
 </div>
-    
-

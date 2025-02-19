@@ -1,37 +1,17 @@
 <div class="container">
-   
     <h1>{{textBottom}}</h1>
     <br>
-    <form #specialityForm="ngForm" (ngSubmit)="onSubmit(specialityForm.value)"><!--Muy atento a esto-->
-        
-        <!--FIN de campo DNI-->
+    <form #specialtyForm="ngForm" (ngSubmit)="onSubmit(specialtyForm.value)">
         <div class="input-group mb-3">
-            <span class="input-group-text">type</span>
-
-            <input type="text" class="form-control" required [(ngModel)]="spe.name" name="name"
-                #nombre="ngModel" id="floatingInputGroup1" placeholder="Nombre">
-
+            <span class="input-group-text">Specialty</span>
+            <input type="text" class="form-control" required [(ngModel)]="spe.name" name="name" #nombre="ngModel"
+                id="floatingInputGroup1" placeholder="Nombre">
         </div>
-       
-
-       
-
-
         <div class="d-flex justify-content-center mt-3">
-            <button type="submit" class="btn btn-primary" [disabled]="!specialityForm.valid" >{{textBottom}}</button><!--Atento para lo que sirve el [disabled]. Sehabilita el botón si no están los datos correctos del formulario-->
-            <button type="submit" class="btn btn-danger mx-1" routerLink="/">Cancelar</button>
+            <button type="submit" class="btn btn-primary" [disabled]="!specialtyForm.valid">{{textBottom}}</button>
+            <button type="button" class="btn btn-danger mx-1" (click)="cancel()">Cancelar</button>
         </div>
     </form>
-
-    <!-- Enlace Volver -->
-    <a class="btn btn-warning d-flex justify-content-center mt-3" routerLink="/" role="button">Volver atrás</a><!--Atento a el routerLink y la barra-->
-
-    
+    <a class="btn btn-warning d-flex justify-content-center mt-3" routerLink="/" role="button">Volver atrás</a>
     <br>
-
-
-
 </div>
-    
-
-
