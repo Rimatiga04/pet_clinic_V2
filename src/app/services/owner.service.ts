@@ -350,5 +350,12 @@ export class OwnerService {
 
 
   }
-
+    EliminarVet(idVet: number) {
+    console.log("Estamos borrando a un veterinario con id", idVet);
+    let body={
+      accion:"BorraVet",
+      id:idVet
+    }
+    return this.httpClient.post<any>(this.url,body);
+    }
 }

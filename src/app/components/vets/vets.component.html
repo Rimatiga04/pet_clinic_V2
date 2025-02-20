@@ -26,7 +26,7 @@
                 </td>
                 }
                 <td><a ><button class="btn btn-default" routerLink="/vet-add/{{vet.id}}">Edit vet</button></a>
-                <a ><button class="btn btn-default">Delete vet</button></a></td>
+                <a ><button class="btn btn-default" (click)="deleteVet(vet.id, vet.firstName + vet.lastName)">Delete vet</button></a></td>
                 <!-- <td>
                 <div class="d-flex">
                     <button class="btn btn-primary mx-2" routerLink="/formulario/{{propietario.id}}">Modificar</button>
