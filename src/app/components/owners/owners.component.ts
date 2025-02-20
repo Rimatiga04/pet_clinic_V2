@@ -1,25 +1,26 @@
 import { Component } from '@angular/core';
 import { OwnerService } from '../../services/owner.service';
-import { CommonModule } from '@angular/common';
+import { CommonModule, CurrencyPipe, DecimalPipe } from '@angular/common';
 import { Owner } from '../../models/owner';
 import { Pet } from '../../models/pet';
 import { Router, RouterLink } from '@angular/router';
 import { PetListComponent } from '../pet-list/pet-list.component';
 import { ButtonModule } from 'primeng/button';
 
+
 //import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @Component({
   selector: 'app-owners',
-  imports: [CommonModule, RouterLink, PetListComponent, ButtonModule],
+  imports: [CommonModule, RouterLink, PetListComponent, ButtonModule, CurrencyPipe, DecimalPipe],
   templateUrl: './owners.component.html',
   styleUrl: './owners.component.css'
 })
 export class OwnersComponent {
-  
+
 
   public propietarios: Owner[] = [];//Creamos esta variable para meter ahí el resultado de la petición
-  constructor(private servicioPajax: OwnerService, private ruta: Router) {}
+  constructor(private servicioPajax: OwnerService, private ruta: Router) { }
   ngOnInit() {//Muy atento a esto también
     this.servicioPajax.getOwners().subscribe({
       //next y error hay que llamarlos así
